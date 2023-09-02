@@ -1,20 +1,20 @@
-import { NextFunction, Request, Response } from 'express';
-import { allowedOrigins } from '../config/configCors';
+import { NextFunction, Request, Response } from 'express'
+import { allowedOrigins } from '../config/configCors'
 
 export const validateOrigin = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
-  const origin = req.headers.origin;
+  const origin = req.headers.origin
 
   if (!origin) {
-    return next();
+    return next()
   }
 
   if (allowedOrigins.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', `${origin}`);
-    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Origin', `${origin}`)
+    res.header('Access-Control-Allow-Credentials', 'true')
   }
-  next();
-};
+  next()
+}
